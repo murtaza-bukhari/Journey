@@ -1,0 +1,32 @@
+.checkpoint {
+  position: absolute;
+  inset: 0;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  font-size: 18px;
+
+  animation: rotateY 2s ease-in-out infinite;
+
+  filter:
+    drop-shadow(0 0 6px rgba(255, 223, 90, 0.8))
+    drop-shadow(0 0 12px rgba(255, 223, 90, 0.4));
+
+  transform-style: preserve-3d;
+}
+
+@keyframes rotateY {
+  0% {
+    transform: perspective(200px) rotateY(0deg);
+  }
+
+  50% {
+    transform: perspective(200px) rotateY(180deg);
+  }
+
+  100% {
+    transform: perspective(200px) rotateY(360deg);
+  }
+}

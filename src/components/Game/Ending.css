@@ -1,0 +1,61 @@
+.ending-overlay {
+  position: fixed;
+  inset: 0;
+
+  background: rgba(12, 7, 20, 0.92);
+  backdrop-filter: blur(6px);
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  z-index: 1000;
+}
+
+.letter {
+  width: min(650px, 90%);
+  padding: 40px;
+
+  background: #fffaf4;
+  color: #3f2c4d;
+
+  border-radius: 16px;
+
+  box-shadow:
+    0 20px 50px rgba(0, 0, 0, 0.35);
+
+  text-align: center;
+}
+
+.letter h2 {
+  font-size: 2rem;
+  margin-bottom: 20px;
+}
+
+.letter p {
+  font-size: 1.1rem;
+  line-height: 1.8;
+
+  margin-bottom: 35px;
+}
+
+.letter button {
+  padding: 12px 24px;
+
+  border: none;
+  border-radius: 10px;
+
+  background: #d16ba5;
+  color: white;
+
+  font-size: 1rem;
+  cursor: pointer;
+
+  transition: 0.2s ease;
+}
+
+.letter button:hover {
+  transform: translateY(-2px);
+
+  background: #c25a97;
+}

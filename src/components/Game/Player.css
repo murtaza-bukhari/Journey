@@ -1,0 +1,54 @@
+.player {
+  position: absolute;
+  inset: 0;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  font-size: 28px;
+
+  z-index: 2;
+
+  animation: idleBounce 1.4s ease-in-out infinite;
+}
+
+.player {
+  position: absolute;
+  inset: 0;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.player::before {
+  content: "";
+
+  position: absolute;
+
+  width: 26px;
+  height: 26px;
+
+  border-radius: 50%;
+
+  background: #fff3fd;
+
+  box-shadow:
+    0 0 20px #ff7fd1;
+
+  z-index: -1;
+}
+
+
+@keyframes idleBounce {
+
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+
+  50% {
+    transform: translateY(-3px);
+  }
+}

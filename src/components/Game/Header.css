@@ -1,0 +1,68 @@
+.header {
+  text-align: center;
+
+  margin-bottom: 30px;
+}
+
+.header h1 {
+  text-shadow: 0 0 20px rgba(255, 255, 255, 0.15);
+}
+
+.moon {
+  filter: drop-shadow(0 0 12px rgba(255, 255, 200, 0.35));
+}
+
+.header::after {
+  content: "";
+
+  display: block;
+
+  width: 120px;
+
+  height: 1px;
+
+  margin: 22px auto 0;
+
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.moon {
+  font-size: 28px;
+
+  margin-bottom: 10px;
+
+  animation: float 3s ease-in-out infinite;
+}
+
+.header h1 {
+  margin: 0;
+
+  font-size: 2.4rem;
+
+  font-weight: 600;
+
+  letter-spacing: 2px;
+
+  color: #ffffff;
+}
+
+.header p {
+  margin-top: 10px;
+
+  color: #cfc8dc;
+
+  font-size: 0.95rem;
+
+  letter-spacing: 1px;
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+
+  50% {
+    transform: translateY(-5px);
+  }
+}
