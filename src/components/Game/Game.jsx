@@ -8,18 +8,19 @@ import GameOver from "./GameOver";
 
 import maze from "../../data/maze";
 import checkpoints from "../../data/checkpoints";
-import ghosts from "../../data/ghosts";
+import initialGhosts from "../../data/ghosts";
 
 import music from "../../assets/music/background.mp3";
 import "./Game.css";
 
-// Starting position matching row: 1, col: 19 in the vertical maze
-const INITIAL_POSITION = { row: 11, col: 33 };
+// Starting position
+const INITIAL_POSITION = { row: 21, col: 19 };
 
 function Game() {
   // ---------------------- GAME STATE ----------------------
   const [playerPosition, setPlayerPosition] = useState(INITIAL_POSITION);
   const [visitedCheckpoints, setVisitedCheckpoints] = useState([]);
+  const [ghosts, setGhosts] = useState(initialGhosts);
 
   // Endings & Game Over States
   const [gameCompleted, setGameCompleted] = useState(false);
@@ -47,15 +48,80 @@ function Game() {
     }
   }
 
+  // ---------------------- GHOST MOVEMENT ----------------------
+  function moveGhost(ghost) {
+    let nextRow = ghost.row;
+    let nextCol = ghost.col;
+
+    if (ghost.axis === "horizontal") {
+      nextCol += ghost.direction;
+    } else {
+      nextRow += ghost.direction;
+    }
+
+    let nextTile = maze[nextRow]?.[nextCol];
+
+    // Hit wall -> reverse direction
+    if (!nextTile || nextTile === "#") {
+      const newDirection = ghost.direction * -1;
+
+      nextRow = ghost.row;
+      nextCol = ghost.col;
+
+      if (ghost.axis === "horizontal") {
+        nextCol += newDirection;
+      } else {
+        nextRow += newDirection;
+      }
+
+      const reverseTile = maze[nextRow]?.[nextCol];
+
+      // If somehow both directions are blocked, stay still
+      if (!reverseTile || reverseTile === "#") {
+        return {
+          ...ghost,
+          direction: newDirection,
+        };
+      }
+
+      return {
+        ...ghost,
+        row: nextRow,
+        col: nextCol,
+        direction: newDirection,
+      };
+    }
+
+    return {
+      ...ghost,
+      row: nextRow,
+      col: nextCol,
+    };
+  }
+
+  useEffect(() => {
+    if (gameCompleted || falseEnding || gameOver) return;
+
+    const interval = setInterval(() => {
+      setGhosts((prevGhosts) => prevGhosts.map(moveGhost));
+    }, 350);
+
+    return () => clearInterval(interval);
+  }, [gameCompleted, falseEnding, gameOver]);
+
   // ---------------------- KEYBOARD CONTROLS ----------------------
   useEffect(() => {
     function handleKeyDown(event) {
-      const movementKeys = ["ArrowUp", "ArrowDown", "ArrowLeft", "ArrowRight"];
+      const movementKeys = [
+        "ArrowUp",
+        "ArrowDown",
+        "ArrowLeft",
+        "ArrowRight",
+      ];
 
       if (!movementKeys.includes(event.key)) return;
       event.preventDefault();
 
-      // Freeze movement if any popup/overlay is active
       if (gameCompleted || falseEnding || gameOver) return;
 
       setPlayerPosition((prev) => {
@@ -81,15 +147,20 @@ function Game() {
 
         const tile = maze[nextRow]?.[nextCol];
 
-        // Block movement into walls or out of bounds
         if (!tile || tile === "#") return prev;
 
-        return { row: nextRow, col: nextCol };
+        return {
+          row: nextRow,
+          col: nextCol,
+        };
       });
     }
 
     window.addEventListener("keydown", handleKeyDown);
-    return () => window.removeEventListener("keydown", handleKeyDown);
+
+    return () => {
+      window.removeEventListener("keydown", handleKeyDown);
+    };
   }, [gameCompleted, falseEnding, gameOver]);
 
   // ---------------------- POSITION EVALUATION ----------------------
@@ -97,12 +168,11 @@ function Game() {
     const { row, col } = playerPosition;
     const tile = maze[row]?.[col];
 
-    // Stepping off the exit tile allows the false ending warning to re-trigger later
     if (tile !== "E") {
       setDismissedFalseEnding(false);
     }
 
-    // 1. Check for Ghost Collision (Game Over)
+    // Ghost collision
     const hitGhost = ghosts.some(
       (ghost) => ghost.row === row && ghost.col === col
     );
@@ -112,7 +182,7 @@ function Game() {
       return;
     }
 
-    // 2. Check for Checkpoints / Keys
+    // Checkpoints
     const checkpoint = checkpoints.find(
       (cp) => cp.row === row && cp.col === col
     );
@@ -121,7 +191,7 @@ function Game() {
       setVisitedCheckpoints((prev) => [...prev, checkpoint.id]);
     }
 
-    // 3. Check for Exit Tile Trigger
+    // Exit
     if (tile === "E") {
       if (visitedCheckpoints.length === checkpoints.length) {
         setGameCompleted(true);
@@ -129,9 +199,14 @@ function Game() {
         setFalseEnding(true);
       }
     }
-  }, [playerPosition, visitedCheckpoints, dismissedFalseEnding]);
+  }, [
+    playerPosition,
+    ghosts,
+    visitedCheckpoints,
+    dismissedFalseEnding,
+  ]);
 
-  // ---------------------- HANDLERS & RESETS ----------------------
+  // ---------------------- HANDLERS ----------------------
   function handleCloseFalseEnding() {
     setFalseEnding(false);
     setDismissedFalseEnding(true);
@@ -140,6 +215,7 @@ function Game() {
   function resetGame() {
     setPlayerPosition(INITIAL_POSITION);
     setVisitedCheckpoints([]);
+    setGhosts(initialGhosts);
     setGameCompleted(false);
     setFalseEnding(false);
     setDismissedFalseEnding(false);
@@ -151,7 +227,6 @@ function Game() {
     <>
       <audio ref={audioRef} src={music} loop />
 
-      {/* Top Controls Bar */}
       <div className="top-controls">
         <div className="keys-indicator">
           🗝️ {visitedCheckpoints.length} / {checkpoints.length}
@@ -184,9 +259,10 @@ function Game() {
           Restart Journey ↺
         </button>
 
-        {/* Ending & Game Over Popups */}
         {gameCompleted && <Ending onRestart={resetGame} />}
-        {falseEnding && <FalseEnding onClose={handleCloseFalseEnding} />}
+        {falseEnding && (
+          <FalseEnding onClose={handleCloseFalseEnding} />
+        )}
         {gameOver && <GameOver onRestart={resetGame} />}
       </div>
     </>

@@ -27,7 +27,7 @@ function FalseEnding({ onClose }) {
 
         {/* Closes the popup and keeps the player at the exit tile */}
         <button onClick={onClose}>
-          Go Bac
+          Go Back
         </button>
       </motion.div>
     </motion.div>
