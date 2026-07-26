@@ -21,26 +21,45 @@
   transform: translateY(-2px);
 }
 
-.music-button {
+/* Container anchored to top-right */
+.top-controls {
   position: fixed;
   top: 24px;
   right: 24px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  z-index: 100;
+}
 
+/* Base pill badge style */
+.keys-indicator {
   padding: 10px 18px;
-
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  border-radius: 999px;
-
-  background: rgba(255, 255, 255, 0.08);
-  backdrop-filter: blur(10px);
-
-  color: #f6f2ff;
-
   font-size: 0.95rem;
   font-weight: 500;
+  color: #f6f2ff;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 999px;
+  backdrop-filter: blur(10px);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  user-select: none;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
 
+/* Music Button (removed position fixed) */
+.music-button {
+  padding: 10px 18px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(10px);
+  color: #f6f2ff;
+  font-size: 0.95rem;
+  font-weight: 500;
   cursor: pointer;
-
   transition:
     transform 0.2s ease,
     background 0.2s ease,
@@ -50,11 +69,8 @@
 
 .music-button:hover {
   transform: translateY(-2px);
-
   background: rgba(255, 255, 255, 0.14);
-
   border-color: rgba(255, 255, 255, 0.25);
-
   box-shadow: 0 0 18px rgba(255, 255, 255, 0.08);
 }
 

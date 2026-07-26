@@ -1,12 +1,25 @@
-.maze{
-    padding:18px;
+.maze {
+  /* Set max cell size (40px) or shrink proportionally on smaller screens */
+  --cols: 35; /* Fallback if inline style isn't read */
+  --max-cell-size: 40px;
+  
+  /* Calculate max cell width that fits within available screen width */
+  --cell-size: min(var(--max-cell-size), calc((100vw - 48px) / var(--cols)));
 
-    border-radius:22px;
+  padding: 18px;
+  border-radius: 22px;
+  background: rgba(255, 255, 255, 0.04);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 0 40px rgba(0, 0, 0, 0.4);
 
-    background:rgba(255,255,255,.04);
+  /* Prevent grid from overflowing container */
+  max-width: 100%;
+  box-sizing: border-box;
+  overflow-x: auto; /* Fallback scrollbar for ultra-small screens */
+}
 
-    backdrop-filter:blur(10px);
-
-    box-shadow:
-        0 0 40px rgba(0,0,0,.4);
+/* Ensure Cells dynamically match the cell size */
+.maze > * {
+  width: var(--cell-size);
+  height: var(--cell-size);
 }

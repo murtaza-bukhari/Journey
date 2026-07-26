@@ -1,15 +1,17 @@
 import maze from "../../data/maze";
 import Cell from "./Cell";
 
-import './Maze.css'
+import "./Maze.css";
 
-function Maze({ playerPosition, visitedCheckpoints }) {
+function Maze({ playerPosition, visitedCheckpoints, ghosts = [] }) {
+  const cols = maze[0].length;
+
   return (
     <div
       className="maze"
       style={{
         display: "grid",
-        gridTemplateColumns: `repeat(${maze[0].length}, 40px)`,
+        gridTemplateColumns: `repeat(${cols}, var(--cell-size, 40px))`,
       }}
     >
       {maze.map((row, rowIndex) =>
@@ -21,6 +23,7 @@ function Maze({ playerPosition, visitedCheckpoints }) {
             col={colIndex}
             playerPosition={playerPosition}
             visitedCheckpoints={visitedCheckpoints}
+            ghosts={ghosts}
           />
         ))
       )}

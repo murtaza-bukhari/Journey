@@ -1,7 +1,8 @@
 import Tile from "./Tile";
 import Player from "./Player";
 import Checkpoint from "./Checkpoint";
-import End from './End'
+import End from "./End";
+import Ghost from "./Ghost";
 
 import checkpoints from "../../data/checkpoints";
 
@@ -10,21 +11,24 @@ function Cell({
   row,
   col,
   playerPosition,
-  visitedCheckpoints
+  visitedCheckpoints,
+  ghosts = []
 }) {
   const hasPlayer =
     playerPosition.row === row &&
     playerPosition.col === col;
 
   const checkpoint = checkpoints.find(
-    (checkpoint) =>
-      checkpoint.row === row &&
-      checkpoint.col === col
+    (cp) => cp.row === row && cp.col === col
   );
 
   const isVisited =
-    checkpoint &&
-    visitedCheckpoints.includes(checkpoint.id);
+    checkpoint && visitedCheckpoints.includes(checkpoint.id);
+
+  // Check if a ghost is standing on this cell
+  const hasGhost = ghosts.some(
+    (ghost) => ghost.row === row && ghost.col === col
+  );
 
   return (
     <div
@@ -40,9 +44,9 @@ function Cell({
       
       {type === "E" && <End />}
 
-      {hasPlayer && (
-        <Player />
-      )}
+      {hasGhost && <Ghost />}
+
+      {hasPlayer && <Player />}
     </div>
   );
 }
