@@ -15,8 +15,8 @@ import music from "../../assets/music/background.mp3";
 
 function Game() {
   const [playerPosition, setPlayerPosition] = useState({
-    row: 1,
-    col: 1,
+    row: 5,
+    col: 33,
   });
 
   const [activeCheckpoint, setActiveCheckpoint] = useState(null);
@@ -126,8 +126,8 @@ function Game() {
 
   function resetGame() {
     setPlayerPosition({
-      row: 1,
-      col: 1,
+      row: 5,
+      col: 33,
     });
 
     setVisitedCheckpoints([]);

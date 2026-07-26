@@ -1,7 +1,7 @@
 const checkpoints = [
   {
     id: 1,
-    row: 3,
+    row: 5,
     col: 19,
     title: "🌸 Take a Breath 🌸",
     message:
@@ -10,8 +10,8 @@ const checkpoints = [
 
   {
     id: 2,
-    row: 7,
-    col: 17,
+    row: 5,
+    col: 9,
     title: "☀️ Keep Walking ☀️",
     message:
       "Even slow progress is still progress, and I'm proud of every step you take.",
@@ -19,8 +19,8 @@ const checkpoints = [
 
   {
     id: 3,
-    row: 11,
-    col: 7,
+    row: 3,
+    col: 1,
     title: "🦋 You Matter 🦋",
     message:
       "Even on the days you doubt yourself, you are deeply loved.",
@@ -28,8 +28,8 @@ const checkpoints = [
 
   {
     id: 4,
-    row: 15,
-    col: 5,
+    row: 3,
+    col: 10,
     title: "🌼 Little Victories 🌼",
     message:
       "Every challenge you've overcome has made you stronger than you realize.",
@@ -37,8 +37,8 @@ const checkpoints = [
 
   {
     id: 5,
-    row: 17,
-    col: 14,
+    row: 3,
+    col: 19,
     title: "⭐ Almost There ⭐",
     message:
       "Look how far you've already come. Don't forget to be proud of yourself.",
@@ -46,8 +46,8 @@ const checkpoints = [
 
   {
     id: 6,
-    row: 19,
-    col: 7,
+    row: 3,
+    col: 33,
     title: "💜 From My Heart 💜",
     message:
       "Whenever life feels overwhelming, remember you never have to face it alone.",
@@ -55,8 +55,8 @@ const checkpoints = [
 
   {
     id: 7,
-    row: 7,
-    col: 15,
+    row: 1,
+    col: 14,
     title: "❤️ One Last Step ❤️",
     message:
       "There's one final surprise waiting for you...",

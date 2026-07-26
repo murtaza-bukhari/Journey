@@ -15,13 +15,13 @@ function Ending({ onRestart }) {
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.4, duration: 0.6 }}
       >
-        <h2>You Made It ❤️</h2>
+        <h2>💜 You Made It 💜</h2>
 
         <p>
           You navigated through the maze of terror,<br></br>
           You will find a way through everything...<br></br>
           Always hold your head up high.<br></br>
-          Always keep that gorgeous smile on your face.<br></br>
+          Always keep smiling.<br></br>
           You Got This !
         </p>
 

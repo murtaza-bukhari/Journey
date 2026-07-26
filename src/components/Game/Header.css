@@ -1,7 +1,5 @@
 .header {
   text-align: center;
-
-  margin-bottom: 30px;
 }
 
 .header h1 {
@@ -29,7 +27,7 @@
 .moon {
   font-size: 28px;
 
-  margin-bottom: 10px;
+  margin-bottom: 5px;
 
   animation: float 3s ease-in-out infinite;
 }
@@ -47,7 +45,7 @@
 }
 
 .header p {
-  margin-top: 10px;
+  margin-top: 5px;
 
   color: #cfc8dc;
 
