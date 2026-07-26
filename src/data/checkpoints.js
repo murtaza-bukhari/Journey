@@ -7,7 +7,7 @@ const checkpoints = [
   { id: 6, row: 17, col: 10 },
   { id: 7, row: 21, col: 1 },
   { id: 8, row: 21, col: 15 },
-  { id: 9, row: 1, col: 17 }
+  { id: 9, row: 1, col: 16 }
 ];
 
 export default checkpoints;

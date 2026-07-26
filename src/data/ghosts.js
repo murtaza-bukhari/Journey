@@ -8,8 +8,8 @@ const ghosts = [
   },
   {
     id: 2,
-    row: 9,
-    col: 17,
+    row: 11,
+    col: 15,
     direction: 1,
     axis: "horizontal"
   },

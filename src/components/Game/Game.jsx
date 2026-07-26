@@ -11,6 +11,10 @@ import checkpoints from "../../data/checkpoints";
 import initialGhosts from "../../data/ghosts";
 
 import music from "../../assets/music/background.mp3";
+import pop from "../../assets/music/pop.mp3";
+import bite from "../../assets/music/bite.mp3";
+import ting from "../../assets/music/ting.mp3";
+
 import "./Game.css";
 
 // Starting position
@@ -30,13 +34,57 @@ function Game() {
 
   // ---------------------- AUDIO LOGIC ----------------------
   const audioRef = useRef(null);
+  const moveAudioRef = useRef(new Audio(pop));
+  const biteAudioRef = useRef(new Audio(bite));
+  const tingAudioRef = useRef(new Audio(ting));
+
   const [musicPlaying, setMusicPlaying] = useState(false);
 
   useEffect(() => {
     if (audioRef.current) {
       audioRef.current.volume = 0.15;
     }
+
+    moveAudioRef.current.volume = 0.35;
+    biteAudioRef.current.volume = 0.5;
+    tingAudioRef.current.volume = 0.7;
+
+    moveAudioRef.current.preload = "auto";
+    biteAudioRef.current.preload = "auto";
+    tingAudioRef.current.preload = "auto";
+
   }, []);
+
+  function playMoveSound() {
+    const audio = moveAudioRef.current;
+
+    audio.pause();
+
+    // Skip the silence at the beginning.
+    // Adjust this value until it feels instant.
+    audio.currentTime = 1.3;
+
+    audio.play().catch(() => { });
+  }
+
+  function playBiteSound() {
+    const audio = biteAudioRef.current;
+
+    audio.pause();
+
+    // Skip silence here too.
+    audio.currentTime = 0.5;
+
+    audio.play().catch(() => { });
+  }
+
+  function playTingSound() {
+    const audio = tingAudioRef.current;
+
+    audio.pause();
+    audio.currentTime = 1; // Skip any silence
+    audio.play().catch(() => { });
+  }
 
   function toggleMusic() {
     if (audioRef.current.paused) {
@@ -149,6 +197,8 @@ function Game() {
 
         if (!tile || tile === "#") return prev;
 
+        playMoveSound();
+
         return {
           row: nextRow,
           col: nextCol,
@@ -178,6 +228,7 @@ function Game() {
     );
 
     if (hitGhost) {
+      playBiteSound();
       setGameOver(true);
       return;
     }
@@ -188,6 +239,7 @@ function Game() {
     );
 
     if (checkpoint && !visitedCheckpoints.includes(checkpoint.id)) {
+      playTingSound();
       setVisitedCheckpoints((prev) => [...prev, checkpoint.id]);
     }
 
