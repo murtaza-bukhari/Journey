@@ -5,15 +5,17 @@
 }
 
 body {
-  background: linear-gradient(
-    180deg,
-    #241335,
-    #171024
-  );
+  margin: 0;
+}
 
+.app {
   min-height: 100vh;
 
-  font-family: "Poppins", sans-serif;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
 
-  color: white;
+  font-family: "Poppins", sans-serif;
+  color: #e8e8e8;
 }

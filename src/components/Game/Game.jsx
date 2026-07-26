@@ -4,7 +4,6 @@ import Maze from "./Maze";
 import Popup from "./Popup";
 import Header from "./Header";
 import Ending from "./Ending";
-import Stars from "./Stars";
 
 import maze from "../../data/maze";
 import checkpoints from "../../data/checkpoints";
@@ -152,9 +151,6 @@ function Game() {
           minHeight: "100vh",
         }}
       >
-
-
-        <Stars />
 
         <Header />
         <Maze playerPosition={playerPosition} visitedCheckpoints={visitedCheckpoints} />

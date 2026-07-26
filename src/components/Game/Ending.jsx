@@ -15,18 +15,19 @@ function Ending({ onRestart }) {
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.4, duration: 0.6 }}
       >
-        <h2>💜 .You Made It. 💜</h2>
+        <h2>☠️ You Escaped. ☠️</h2>
 
         <p>
-          You navigated through the maze of terror,<br></br>
-          You will find a way through everything...<br></br>
-          Always hold your head up high.<br></br>
-          Always keep smiling.<br></br>
-          You Got This !
+          The silence finally fades.<br />
+          The maze can no longer reach you.<br />
+          Some doors should never be opened...<br />
+          But you found your way through.<br />
+          <br />
+          Until next time.
         </p>
 
         <button onClick={onRestart}>
-          Restart Journey ↺
+          Enter Again ↺
         </button>
       </motion.div>
     </motion.div>

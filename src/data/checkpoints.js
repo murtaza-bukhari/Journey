@@ -3,63 +3,63 @@ const checkpoints = [
     id: 1,
     row: 5,
     col: 19,
-    title: "🌸 Take a Breath 🌸",
+    title: "🩸 The First Mark 🩸",
     message:
-      "You don't have to solve everything today. One step is enough.",
+      "You weren't the first to walk these halls... only the latest.",
   },
 
   {
     id: 2,
     row: 5,
     col: 9,
-    title: "☀️ Keep Walking ☀️",
+    title: "👁️ Something Watches 👁️",
     message:
-      "Even slow progress is still progress, and I'm proud of every step you take.",
+      "It knows where you are. Keep moving, but don't look back.",
   },
 
   {
     id: 3,
     row: 3,
     col: 1,
-    title: "🦋 You Matter 🦋",
+    title: "🕯️ Fading Light 🕯️",
     message:
-      "Even on the days you doubt yourself, you are deeply loved.",
+      "The darkness grows quieter the deeper you go.",
   },
 
   {
     id: 4,
     row: 3,
     col: 10,
-    title: "🌼 Little Victories 🌼",
+    title: "⛓️ No Turning Back ⛓️",
     message:
-      "Every challenge you've overcome has made you stronger than you realize.",
+      "Every step forward seals the path behind you.",
   },
 
   {
     id: 5,
     row: 3,
     col: 19,
-    title: "⭐ Almost There ⭐",
+    title: "💀 Almost Found 💀",
     message:
-      "Look how far you've already come. Don't forget to be proud of yourself.",
+      "You're getting closer... but so is something else.",
   },
 
   {
     id: 6,
     row: 3,
     col: 33,
-    title: "💜 From My Heart 💜",
+    title: "🚪 The Exit Waits 🚪",
     message:
-      "Whenever life feels overwhelming, remember you never have to face it alone.",
+      "You can feel it now. One last stretch through the silence.",
   },
 
   {
     id: 7,
     row: 1,
     col: 14,
-    title: "❤️ One Last Step ❤️",
+    title: "☠️ Don't Look Back ☠️",
     message:
-      "There's one final surprise waiting for you...",
+      "Whatever followed you this far... leave it behind and step through the door.",
   },
 ];
 

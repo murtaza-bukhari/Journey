@@ -3,30 +3,26 @@
   inset: 0;
 
   display: flex;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
 
   font-size: 18px;
 
-  animation: rotateY 2s ease-in-out infinite;
-
   filter:
-    drop-shadow(0 0 6px rgba(255, 223, 90, 0.8))
-    drop-shadow(0 0 12px rgba(255, 223, 90, 0.4));
+    drop-shadow(0 0 4px rgba(120, 0, 0, 0.45))
+    drop-shadow(0 0 8px rgba(120, 0, 0, 0.2));
 
-  transform-style: preserve-3d;
+  animation: checkpointPulse 1.8s ease-in-out infinite;
+  will-change: transform;
 }
 
-@keyframes rotateY {
-  0% {
-    transform: perspective(200px) rotateY(0deg);
+@keyframes checkpointPulse {
+  0%,
+  100% {
+    transform: scale(1);
   }
 
   50% {
-    transform: perspective(200px) rotateY(180deg);
-  }
-
-  100% {
-    transform: perspective(200px) rotateY(360deg);
+    transform: scale(1.2);
   }
 }

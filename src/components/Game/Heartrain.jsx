@@ -13,7 +13,7 @@ function HeartRain() {
             animationDuration: `${3 + (index % 4) * 0.5}s`,
           }}
         >
-          ❤️
+          💀
         </span>
       ))}
     </div>

@@ -2,7 +2,7 @@
   position: fixed;
   inset: 0;
 
-  background: rgba(12, 7, 20, 0.92);
+  background: rgba(8, 10, 16, 0.88);
   backdrop-filter: blur(6px);
 
   display: flex;
@@ -16,13 +16,15 @@
   width: min(650px, 90%);
   padding: 40px;
 
-  background: #fffaf4;
-  color: #3f2c4d;
+  background: #d8d2c4;
+  color: #222;
 
-  border-radius: 16px;
+  border: 1px solid #8b8477;
+  border-radius: 14px;
 
   box-shadow:
-    0 20px 50px rgba(0, 0, 0, 0.35);
+    0 20px 50px rgba(0, 0, 0, 0.45),
+    inset 0 0 20px rgba(255, 255, 255, 0.08);
 
   text-align: center;
 }
@@ -30,6 +32,10 @@
 .letter h2 {
   font-size: 2rem;
   margin-bottom: 20px;
+
+  color: #1b1b1b;
+
+  text-shadow: 0 0 4px rgba(255, 255, 255, 0.15);
 }
 
 .letter p {
@@ -37,16 +43,18 @@
   line-height: 1.8;
 
   margin-bottom: 35px;
+
+  color: #333;
 }
 
 .letter button {
   padding: 12px 24px;
 
-  border: none;
+  border: 1px solid #4f5f73;
   border-radius: 10px;
 
-  background: #d16ba5;
-  color: white;
+  background: #364556;
+  color: #f5f5f5;
 
   font-size: 1rem;
   cursor: pointer;
@@ -57,5 +65,5 @@
 .letter button:hover {
   transform: translateY(-2px);
 
-  background: #c25a97;
+  background: #44566b;
 }

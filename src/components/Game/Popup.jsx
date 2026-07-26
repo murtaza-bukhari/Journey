@@ -28,7 +28,7 @@ function Popup({ checkpoint, onClose }) {
         <p>{checkpoint.message}</p>
 
         <button onClick={onClose}>
-          Continue ❤️
+          Continue 
         </button>
       </motion.div>
     </div>

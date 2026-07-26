@@ -3,12 +3,12 @@ import "./Header.css";
 function Header() {
   return (
     <header className="header">
-      <div className="moon">🌙</div>
+      <div className="moon">💀</div>
 
-      <h1>A Little Journey</h1>
+      <h1>Don't Look Back</h1>
 
       <p>
-        Every small step counts.
+        Find the exit... if one exists.
       </p>
     </header>
   );

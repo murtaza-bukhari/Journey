@@ -3,11 +3,11 @@
 }
 
 .header h1 {
-  text-shadow: 0 0 20px rgba(255, 255, 255, 0.15);
+  text-shadow: 0 0 18px rgba(120, 0, 0, 0.35);
 }
 
 .moon {
-  filter: drop-shadow(0 0 12px rgba(255, 255, 200, 0.35));
+  filter: drop-shadow(0 0 10px rgba(160, 0, 0, 0.45));
 }
 
 .header::after {
@@ -16,12 +16,11 @@
   display: block;
 
   width: 120px;
-
   height: 1px;
 
   margin: 22px auto 0;
 
-  background: rgba(255, 255, 255, 0.15);
+  background: rgba(150, 0, 0, 0.35);
 }
 
 .moon {
@@ -39,19 +38,20 @@
 
   font-weight: 600;
 
-  letter-spacing: 2px;
+  letter-spacing: 3px;
 
-  color: #ffffff;
+  color: #f2f2f2;
 }
 
 .header p {
-  margin-top: 5px;
+  margin-top: 6px;
 
-  color: #cfc8dc;
+  color: #9b8d8d;
 
   font-size: 0.95rem;
 
   letter-spacing: 1px;
+  font-style: italic;
 }
 
 @keyframes float {
@@ -62,5 +62,24 @@
 
   50% {
     transform: translateY(-5px);
+  }
+}
+
+.moon {
+  font-size: 28px;
+  margin-bottom: 5px;
+
+  animation:
+    float 3s ease-in-out infinite,
+    pulse 2.5s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    filter: drop-shadow(0 0 6px rgba(150, 0, 0, 0.2));
+  }
+
+  50% {
+    filter: drop-shadow(0 0 14px rgba(180, 0, 0, 0.6));
   }
 }
